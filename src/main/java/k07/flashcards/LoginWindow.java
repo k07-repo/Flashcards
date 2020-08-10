@@ -13,7 +13,7 @@ public final class LoginWindow extends JFrame {
         JTextField passField = new JPasswordField();
 
         //local database only
-        urlField.setText("jdbc:mysql://127.0.0.1:3306/myDB");
+        urlField.setText("jdbc:mysql://127.0.0.1:3306/flashcards");
         urlField.setEditable(false);
 
         this.setLayout(new GridLayout(4, 1));

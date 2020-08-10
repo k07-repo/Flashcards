@@ -1,8 +1,7 @@
 package k07.flashcards;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseUtils {
     private static Connection connection = null;
@@ -22,5 +21,23 @@ public class DatabaseUtils {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static CharacterTuple getInfoFromTable(String tableName) {
+        String query = "SELECT * FROM Flashcards";
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while(rs.next()) {
+                String character = rs.getString("front");
+                String meaning = rs.getString("meaning");
+                return new CharacterTuple(character, meaning);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
     }
 }
