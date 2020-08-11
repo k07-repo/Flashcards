@@ -23,7 +23,8 @@ public class DatabaseUtils {
         return false;
     }
 
-    public static CharacterTuple getInfoFromTable(String tableName) {
+    public static ArrayList<CharacterTuple> getInfoFromTable(String tableName) {
+        ArrayList<CharacterTuple> result = new ArrayList<CharacterTuple>();
         String query = "SELECT * FROM Flashcards";
         try {
             Statement st = connection.createStatement();
@@ -32,12 +33,12 @@ public class DatabaseUtils {
             while(rs.next()) {
                 String character = rs.getString("front");
                 String meaning = rs.getString("meaning");
-                return new CharacterTuple(character, meaning);
+                result.add(new CharacterTuple(character, meaning));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            return result;
         }
-        return null;
+        return result;
     }
 }
