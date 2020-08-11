@@ -3,6 +3,7 @@ package k07.flashcards;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class RootWindow extends JFrame {
 
@@ -12,12 +13,12 @@ public class RootWindow extends JFrame {
     public RootWindow() {
         JTextField characterField = new JTextField();
         JTextField meaningField = new JTextField();
-        JTextField pronunciationField = new JTextField();
+        JTextField readingField = new JTextField();
 
-        this.setLayout(new GridLayout(5, 1));
+        this.setLayout(new GridLayout(6, 1));
         this.add(ComponentUtils.componentWithLabel(characterField, "Character"));
         this.add(ComponentUtils.componentWithLabel(meaningField, "Meaning"));
-        this.add(ComponentUtils.componentWithLabel(pronunciationField, "test"));
+        this.add(ComponentUtils.componentWithLabel(readingField, "test"));
 
         JButton retrieveButton = new JButton();
         retrieveButton.addActionListener(e -> {
@@ -28,8 +29,11 @@ public class RootWindow extends JFrame {
 
         JButton goThroughButton = new JButton();
         goThroughButton.addActionListener(e -> {
-           if(results == null || results.size() <= 0) {
-               return;
+           if(results == null) {
+               characterField.setText("Error: database is null!");
+           }
+           else if(results.size() <= 0) {
+               characterField.setText("Error: database is empty!");
            }
            else {
                currentPos++;
@@ -39,10 +43,19 @@ public class RootWindow extends JFrame {
                CharacterTuple tuple = results.get(currentPos);
                characterField.setText(tuple.character);
                meaningField.setText(tuple.meaning);
+               readingField.setText(tuple.reading);
            }
         });
         goThroughButton.setText("Retrieve next character");
         this.add(goThroughButton);
+
+        JButton shuffleButton = new JButton();
+        shuffleButton.addActionListener(e -> {
+           Collections.shuffle(results);
+           currentPos = 0;
+        });
+        shuffleButton.setText("Shuffle list");
+        this.add(shuffleButton);
     }
 
 
