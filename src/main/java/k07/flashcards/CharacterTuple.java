@@ -22,7 +22,7 @@ public class CharacterTuple {
         String result = "Character: " + this.character + "\n" +
                 "Meaning: " + this.meaning + "\n" +
                 "Onyomi: " + this.onyomiRomaji + " | " + this.onyomiKatakana + "\n" +
-                "Kunyomi:" + this.kunyomiRomaji + " | " + this.kunyomiHiragana + "\n";
+                "Kunyomi: " + this.kunyomiRomaji + " | " + this.kunyomiHiragana + "\n";
         return result;
     }
 }
