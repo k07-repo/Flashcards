@@ -23,7 +23,7 @@ public final class LoginWindow extends JFrame {
 
         JButton loginButton = new JButton("Login");
         loginButton.addActionListener(e -> {
-            boolean loginSuccessful = DatabaseUtils.login(urlField.getText(), userField.getText(), passField.getText());
+            boolean loginSuccessful = false; //DatabaseUtils.login(urlField.getText(), userField.getText(), passField.getText());
             if(loginSuccessful) {
                 RootWindow rootWindow = new RootWindow();
                 rootWindow.setVisible(true);
