@@ -7,14 +7,16 @@ public class CharacterTuple {
     public String onyomiKatakana;
     public String kunyomiRomaji;
     public String kunyomiHiragana;
+    public String imageURL;
 
-    public CharacterTuple(String character, String meaning, String onyomiRomaji, String onyomiKatakana, String kunyomiRomaji, String kunyomiHiragana) {
+    public CharacterTuple(String character, String meaning, String onyomiRomaji, String onyomiKatakana, String kunyomiRomaji, String kunyomiHiragana, String imageURL) {
         this.character = character;
         this.meaning = meaning;
         this.onyomiRomaji = onyomiRomaji;
         this.onyomiKatakana = onyomiKatakana;
         this.kunyomiRomaji = kunyomiRomaji;
         this.kunyomiHiragana = kunyomiHiragana;
+        this.imageURL = imageURL;
     }
 
     @Override

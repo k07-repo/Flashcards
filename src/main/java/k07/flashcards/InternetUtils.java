@@ -34,7 +34,8 @@ public class InternetUtils {
             String kunyomiRomaji = kunyomi.get("romaji").toString();
             String kunyomiHiragana = kunyomi.get("hiragana").toString();
 
-            CharacterTuple kanji = new CharacterTuple(character, meaning, onyomiRomaji, onyomiKatakana, kunyomiRomaji, kunyomiHiragana);
+            String imageUrl = ((LinkedTreeMap)subMap.get("video")).get("poster").toString();
+            CharacterTuple kanji = new CharacterTuple(character, meaning, onyomiRomaji, onyomiKatakana, kunyomiRomaji, kunyomiHiragana, imageUrl);
             return kanji;
         }
         catch (UnirestException e){

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EventListener;
 
+import org.apache.batik.swing.JSVGCanvas;
+
 public class RootWindow extends JFrame {
 
     private ArrayList<CharacterTuple> results;
@@ -16,20 +18,26 @@ public class RootWindow extends JFrame {
 
     JTextField characterField = new JTextField();
     JTextField apiKeyField = new JTextField();
+    JSVGCanvas canvas = new JSVGCanvas();
 
     public RootWindow() {
         this.setTitle("Kanji Flashcards");
-        this.setLayout(new GridLayout(4, 1));
+        this.setLayout(new GridLayout(5, 1));
 
         JTextArea outputArea = new JTextArea();
         this.add(outputArea);
 
         JButton retrieveButton = new JButton();
         retrieveButton.addActionListener(e -> {
-            outputArea.setText(InternetUtils.obtainMapForKanji(characterField.getText(), apiKeyField.getText()).toString());
+            CharacterTuple kanji = InternetUtils.obtainMapForKanji(characterField.getText(), apiKeyField.getText());
+            outputArea.setText(kanji.toString());
+            canvas.setURI(kanji.imageURL);
+            canvas.repaint();
         });
         retrieveButton.setText("Lookup");
         this.add(retrieveButton);
+
+        this.add(ComponentUtils.componentWithLabel(canvas, "Image"));
 
         this.add(ComponentUtils.componentWithLabel(characterField, "Character"));
 
