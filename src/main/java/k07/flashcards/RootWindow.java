@@ -15,22 +15,25 @@ public class RootWindow extends JFrame {
     int currentPos = 0;
 
     JTextField characterField = new JTextField();
+    JTextField apiKeyField = new JTextField();
 
     public RootWindow() {
         this.setTitle("Kanji Flashcards");
-        this.setLayout(new GridLayout(3, 1));
+        this.setLayout(new GridLayout(4, 1));
 
         JTextArea outputArea = new JTextArea();
         this.add(outputArea);
 
         JButton retrieveButton = new JButton();
         retrieveButton.addActionListener(e -> {
-            outputArea.setText(InternetUtils.obtainMapForKanji(characterField.getText()).toString());
+            outputArea.setText(InternetUtils.obtainMapForKanji(characterField.getText(), apiKeyField.getText()).toString());
         });
         retrieveButton.setText("Lookup");
         this.add(retrieveButton);
 
         this.add(ComponentUtils.componentWithLabel(characterField, "Character"));
+
+        this.add(ComponentUtils.componentWithLabel(apiKeyField, "API Key"));
 
         this.addWindowListener(new CloseApplicationListener());
     }

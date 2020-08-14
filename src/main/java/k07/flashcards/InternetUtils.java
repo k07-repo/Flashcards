@@ -9,11 +9,11 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import java.util.Map;
 
 public class InternetUtils {
-    public static CharacterTuple obtainMapForKanji(String inputCharacter) {
+    public static CharacterTuple obtainMapForKanji(String inputCharacter, String apiKey) {
         try {
             HttpResponse<String> response = Unirest.get("https://kanjialive-api.p.rapidapi.com/api/public/kanji/" + inputCharacter)
                     .header("x-rapidapi-host", "kanjialive-api.p.rapidapi.com")
-                    .header("x-rapidapi-key", "6ef255f0a5mshfa9963dd0198b3cp1b2e23jsn672c1fdff7cf")
+                    .header("x-rapidapi-key", apiKey)
                     .asString();
 
             Gson gson = new Gson();
