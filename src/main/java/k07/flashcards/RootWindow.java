@@ -34,12 +34,16 @@ public class RootWindow extends JFrame {
         JPanel optionPanel = new JPanel();
         optionPanel.setLayout(new GridLayout(3, 1));
         optionPanel.setBorder(BorderFactory.createTitledBorder("Options"));
-        optionPanel.add(ComponentUtils.componentWithLabel(characterField, "Character"));
+        optionPanel.add(ComponentUtils.componentWithLabel(characterField, "Character (leave blank to randomize)"));
         optionPanel.add(ComponentUtils.componentWithLabel(apiKeyField, "API Key"));
 
         JButton retrieveButton = new JButton();
         retrieveButton.addActionListener(e -> {
-            CharacterTuple kanji = InternetUtils.obtainMapForKanji(characterField.getText(), apiKeyField.getText());
+            String charString = characterField.getText();
+            if(charString.isEmpty()) {
+                charString = SupportedCharacterList.getRandomCharacter();
+            }
+            CharacterTuple kanji = InternetUtils.obtainMapForKanji(charString, apiKeyField.getText());
             panel.setKanji(kanji);
         });
         retrieveButton.setText("Lookup");
