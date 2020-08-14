@@ -28,11 +28,5 @@ public class CharacterTuple {
         return result;
     }
 
-    public String buildLabelHTML() {
-        String result = "<html>Character: " + this.character + "<br>" +
-                "Meaning: " + this.meaning + "<br>" +
-                "Onyomi: " + this.onyomiRomaji + " | " + this.onyomiKatakana + "<br>" +
-                "Kunyomi: " + this.kunyomiRomaji + " | " + this.kunyomiHiragana + "</html>";
-        return result;
-    }
+
 }
