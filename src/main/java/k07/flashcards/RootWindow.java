@@ -22,7 +22,7 @@ public class RootWindow extends JFrame {
 
     public RootWindow() {
         this.setTitle("Kanji Flashcards");
-        this.setLayout(new GridLayout(4, 2));
+        this.setLayout(new GridLayout(2, 2));
         this.setupWindowComponents();
         this.addWindowListener(new CloseApplicationListener());
     }
@@ -31,16 +31,20 @@ public class RootWindow extends JFrame {
         JFlashcardPanel panel = new JFlashcardPanel();
         this.add(panel);
 
+        JPanel optionPanel = new JPanel();
+        optionPanel.setLayout(new GridLayout(3, 1));
+        optionPanel.setBorder(BorderFactory.createTitledBorder("Options"));
+        optionPanel.add(ComponentUtils.componentWithLabel(characterField, "Character"));
+        optionPanel.add(ComponentUtils.componentWithLabel(apiKeyField, "API Key"));
+
         JButton retrieveButton = new JButton();
         retrieveButton.addActionListener(e -> {
             CharacterTuple kanji = InternetUtils.obtainMapForKanji(characterField.getText(), apiKeyField.getText());
             panel.setKanji(kanji);
         });
         retrieveButton.setText("Lookup");
-        this.add(retrieveButton);
-
-        this.add(ComponentUtils.componentWithLabel(characterField, "Character"));
-        this.add(ComponentUtils.componentWithLabel(apiKeyField, "API Key"));
+        optionPanel.add(retrieveButton);
+        this.add(optionPanel);
     }
 
     private class CloseApplicationListener implements WindowListener {

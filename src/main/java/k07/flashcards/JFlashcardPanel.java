@@ -18,6 +18,7 @@ public class JFlashcardPanel extends JPanel {
     }
 
     private void setupComponents() {
+        canvas.setBorder(BorderFactory.createLineBorder(Color.black));
         this.add(kanjiLabel);
         this.add(canvas);
     }
