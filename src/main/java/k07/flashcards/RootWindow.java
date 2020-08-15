@@ -32,18 +32,32 @@ public class RootWindow extends JFrame {
         this.add(panel);
 
         JPanel optionPanel = new JPanel();
-        optionPanel.setLayout(new GridLayout(3, 1));
+        optionPanel.setLayout(new GridLayout(4, 1));
         optionPanel.setBorder(BorderFactory.createTitledBorder("Options"));
         optionPanel.add(ComponentUtils.componentWithLabel(characterField, "Character (leave blank to randomize)"));
         optionPanel.add(ComponentUtils.componentWithLabel(apiKeyField, "API Key"));
 
+        String[] grades = {"0 (no grade defined)", "1", "2", "3", "4", "5", "6", "Any"};
+        JComboBox gradeBox = new JComboBox(grades);
+        optionPanel.add(ComponentUtils.componentWithLabel(gradeBox, "Grade"));
         JButton retrieveButton = new JButton();
         retrieveButton.addActionListener(e -> {
-            String charString = characterField.getText();
-            if(charString.isEmpty()) {
-                charString = SupportedCharacterList.getRandomCharacter();
+            char character;
+
+            if(!characterField.getText().isEmpty()) {
+                character = characterField.getText().charAt(0);
             }
-            CharacterTuple kanji = InternetUtils.obtainMapForKanji(charString, apiKeyField.getText());
+            else {
+                if(gradeBox.getSelectedItem().toString().equals("Any")) {
+                    //Not yet supported
+                    character = ' ';
+                }
+                else {
+                    character = SupportedCharacterList.getRandomCharacterByGrade(gradeBox.getSelectedIndex());
+                }
+            }
+
+            CharacterTuple kanji = InternetUtils.obtainMapForKanji(character, apiKeyField.getText());
             panel.setKanji(kanji);
         });
         retrieveButton.setText("Lookup");

@@ -9,7 +9,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import java.util.Map;
 
 public class InternetUtils {
-    public static CharacterTuple obtainMapForKanji(String inputCharacter, String apiKey) {
+    public static CharacterTuple obtainMapForKanji(char inputCharacter, String apiKey) {
         try {
             HttpResponse<String> response = Unirest.get("https://kanjialive-api.p.rapidapi.com/api/public/kanji/" + inputCharacter)
                     .header("x-rapidapi-host", "kanjialive-api.p.rapidapi.com")
@@ -35,7 +35,18 @@ public class InternetUtils {
             String kunyomiHiragana = kunyomi.get("hiragana").toString();
 
             String imageUrl = ((LinkedTreeMap)subMap.get("video")).get("poster").toString();
-            CharacterTuple kanji = new CharacterTuple(character, meaning, onyomiRomaji, onyomiKatakana, kunyomiRomaji, kunyomiHiragana, imageUrl);
+            System.out.println(response.getBody());
+
+            Object o = ((LinkedTreeMap)map.get("references")).get("grade");
+            int grade;
+            if(o == null) {
+                grade = 0;
+            }
+            else {
+                grade = (int)((double)((LinkedTreeMap)map.get("references")).get("grade")); //casting straight to int doesn't work
+            }
+
+            CharacterTuple kanji = new CharacterTuple(character, meaning, onyomiRomaji, onyomiKatakana, kunyomiRomaji, kunyomiHiragana, imageUrl, grade);
             return kanji;
         }
         catch (UnirestException e){

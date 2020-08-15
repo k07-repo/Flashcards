@@ -5,7 +5,8 @@ public class LabelBuilder {
         String result = "<html>Character: " + kanji.character + "<br><br>" +
                 "Meaning: " + kanji.meaning + "<br>" +
                 "Onyomi: " + kanji.onyomiRomaji + " | " + kanji.onyomiKatakana + "<br>" +
-                "Kunyomi: " + kanji.kunyomiRomaji + " | " + kanji.kunyomiHiragana + "</html>";
+                "Kunyomi: " + kanji.kunyomiRomaji + " | " + kanji.kunyomiHiragana + "<br><br>" +
+                "Grade: " + kanji.grade + "</html>";
         return result;
     }
 
@@ -13,7 +14,8 @@ public class LabelBuilder {
         String result = "<html>Character: " + kanji.character + "<br><br>" +
                 "Meaning: <br>" +
                 "Onyomi: <br>" +
-                "Kunyomi: </html>";
+                "Kunyomi: <br><br>" +
+                "Grade: </html>";
         return result;
     }
 }
