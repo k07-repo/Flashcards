@@ -11,7 +11,7 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         RootWindow window = new RootWindow();
-        window.setSize(500, 500);
+        window.setSize(600, 600);
         window.setVisible(true);
     }
 }

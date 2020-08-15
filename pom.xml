@@ -46,11 +46,6 @@
 </build>
 <dependencies>
     <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.18</version>
-    </dependency>
-    <dependency>
         <groupId>com.mashape.unirest</groupId>
         <artifactId>unirest-java</artifactId>
         <version>1.4.9</version>

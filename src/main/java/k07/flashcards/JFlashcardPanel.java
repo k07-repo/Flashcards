@@ -18,6 +18,7 @@ public class JFlashcardPanel extends JPanel {
     }
 
     private void setupComponents() {
+        this.kanjiLabel.setFont(this.kanjiLabel.getFont().deriveFont(14.0F));
         JPanel labelPanel = new JPanel(new BorderLayout());
         labelPanel.add(kanjiLabel, BorderLayout.CENTER);
 

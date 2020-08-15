@@ -35,7 +35,6 @@ public class InternetUtils {
             String kunyomiHiragana = kunyomi.get("hiragana").toString();
 
             String imageUrl = ((LinkedTreeMap)subMap.get("video")).get("poster").toString();
-            System.out.println(response.getBody());
 
             Object o = ((LinkedTreeMap)map.get("references")).get("grade");
             int grade;
