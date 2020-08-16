@@ -1,4 +1,4 @@
-package k07.flashcards;
+package k07.flashcards.tuples;
 
 import java.util.List;
 

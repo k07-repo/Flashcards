@@ -1,15 +1,15 @@
-package k07.flashcards;
+package k07.flashcards.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
 import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.EventListener;
 
-import org.apache.batik.swing.JSVGCanvas;
+import k07.flashcards.utils.SupportedCharacterList;
+import k07.flashcards.tuples.CharacterTuple;
+import k07.flashcards.utils.ComponentUtils;
+import k07.flashcards.utils.InternetUtils;
 
 public class RootWindow extends JFrame {
 

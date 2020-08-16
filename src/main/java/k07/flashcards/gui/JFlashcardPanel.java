@@ -1,5 +1,7 @@
-package k07.flashcards;
+package k07.flashcards.gui;
 
+import k07.flashcards.tuples.CharacterTuple;
+import k07.flashcards.utils.LabelBuilder;
 import org.apache.batik.swing.JSVGCanvas;
 
 import javax.swing.*;

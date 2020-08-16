@@ -1,4 +1,4 @@
-package k07.flashcards;
+package k07.flashcards.tuples;
 
 public class ExampleTuple {
     public String japanese;

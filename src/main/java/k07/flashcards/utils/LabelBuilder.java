@@ -1,4 +1,6 @@
-package k07.flashcards;
+package k07.flashcards.utils;
+
+import k07.flashcards.tuples.CharacterTuple;
 
 public class LabelBuilder {
 

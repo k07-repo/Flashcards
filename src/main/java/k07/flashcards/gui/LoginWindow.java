@@ -1,4 +1,6 @@
-package k07.flashcards;
+package k07.flashcards.gui;
+
+import k07.flashcards.utils.ComponentUtils;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,10 +1,12 @@
-package k07.flashcards;
+package k07.flashcards.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import k07.flashcards.tuples.CharacterTuple;
+import k07.flashcards.tuples.ExampleTuple;
 
 import java.util.ArrayList;
 import java.util.Map;
