@@ -1,5 +1,7 @@
 package k07.flashcards;
 
+import java.util.List;
+
 public class CharacterTuple {
     public String character;
     public String meaning;
@@ -8,9 +10,10 @@ public class CharacterTuple {
     public String kunyomiRomaji;
     public String kunyomiHiragana;
     public String imageURL;
+    public List<ExampleTuple> exampleList;
     public int grade;
 
-    public CharacterTuple(String character, String meaning, String onyomiRomaji, String onyomiKatakana, String kunyomiRomaji, String kunyomiHiragana, String imageURL, int grade) {
+    public CharacterTuple(String character, String meaning, String onyomiRomaji, String onyomiKatakana, String kunyomiRomaji, String kunyomiHiragana, String imageURL, List<ExampleTuple> exampleList, int grade) {
         this.character = character;
         this.meaning = meaning;
         this.onyomiRomaji = onyomiRomaji;
@@ -18,6 +21,7 @@ public class CharacterTuple {
         this.kunyomiRomaji = kunyomiRomaji;
         this.kunyomiHiragana = kunyomiHiragana;
         this.imageURL = imageURL;
+        this.exampleList = exampleList;
         this.grade = grade;
     }
 

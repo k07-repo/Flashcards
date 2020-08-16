@@ -6,6 +6,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class InternetUtils {
@@ -45,7 +46,16 @@ public class InternetUtils {
                 grade = (int)((double)((LinkedTreeMap)map.get("references")).get("grade")); //casting straight to int doesn't work
             }
 
-            CharacterTuple kanji = new CharacterTuple(character, meaning, onyomiRomaji, onyomiKatakana, kunyomiRomaji, kunyomiHiragana, imageUrl, grade);
+            ArrayList<LinkedTreeMap> examples = (ArrayList<LinkedTreeMap>)map.get("examples");
+            ArrayList<ExampleTuple> exampleList = new ArrayList<>();
+            for(int k = 0; k < Math.min(3, examples.size()); k++) {
+                LinkedTreeMap current = examples.get(k);
+                String exampleJapanese = current.get("japanese").toString();
+                String exampleMeaning = ((LinkedTreeMap)current.get("meaning")).get("english").toString();
+                exampleList.add(new ExampleTuple(exampleJapanese, exampleMeaning));
+            }
+
+            CharacterTuple kanji = new CharacterTuple(character, meaning, onyomiRomaji, onyomiKatakana, kunyomiRomaji, kunyomiHiragana, imageUrl, exampleList, grade);
             return kanji;
         }
         catch (UnirestException e){
