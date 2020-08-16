@@ -6,6 +6,7 @@ import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
+import k07.flashcards.utils.DialogUtils;
 import k07.flashcards.utils.SupportedCharacterList;
 import k07.flashcards.tuples.CharacterTuple;
 import k07.flashcards.utils.ComponentUtils;
@@ -49,14 +50,18 @@ public class RootWindow extends JFrame {
             }
             else {
                 if(gradeBox.getSelectedItem().toString().equals("Any")) {
-                    //Not yet supported
-                    character = ' ';
+                    character = SupportedCharacterList.getRandomCharacter();
                 }
                 else {
                     character = SupportedCharacterList.getRandomCharacterByGrade(gradeBox.getSelectedIndex());
                 }
             }
 
+            String apiKey = apiKeyField.getText();
+            if(apiKey.length() <= 0) {
+                DialogUtils.displayErrorMessage("You must enter your RapidAPI key!");
+                return;
+            }
             CharacterTuple kanji = InternetUtils.obtainMapForKanji(character, apiKeyField.getText());
             panel.setKanji(kanji);
         });
