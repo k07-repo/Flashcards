@@ -1,6 +1,7 @@
 package k07.flashcards.gui;
 
 import k07.flashcards.tuples.CharacterTuple;
+import k07.flashcards.utils.DialogUtils;
 import k07.flashcards.utils.LabelBuilder;
 import org.apache.batik.swing.JSVGCanvas;
 
@@ -26,12 +27,20 @@ public class JFlashcardPanel extends JPanel {
 
         JButton revealButton = new JButton("Reveal info");
         revealButton.addActionListener(e -> {
+            if(this.kanji == null) {
+                DialogUtils.displayErrorMessage("Look up a kanji first!");
+                return;
+            }
             this.revealInfo();
         });
         labelPanel.add(revealButton, BorderLayout.SOUTH);
 
         JButton strokeButton = new JButton("Stroke order");
         strokeButton.addActionListener(e -> {
+            if(this.kanji == null) {
+                DialogUtils.displayErrorMessage("Look up a kanji first!");
+                return;
+            }
             this.openStrokeOrderWindow();
         });
         labelPanel.add(strokeButton, BorderLayout.NORTH);
@@ -55,7 +64,6 @@ public class JFlashcardPanel extends JPanel {
         KanjiStrokesWindow window = new KanjiStrokesWindow(this.kanji.strokeURLs);
         window.setVisible(true);
     }
-
 
     public void setCanvasImage(String url) {
         this.canvas.setURI(url);
