@@ -29,6 +29,12 @@ public class JFlashcardPanel extends JPanel {
             this.revealInfo();
         });
         labelPanel.add(revealButton, BorderLayout.SOUTH);
+
+        JButton strokeButton = new JButton("Stroke order");
+        strokeButton.addActionListener(e -> {
+            this.openStrokeOrderWindow();
+        });
+        labelPanel.add(strokeButton, BorderLayout.NORTH);
         this.add(labelPanel);
 
         canvas.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -41,8 +47,13 @@ public class JFlashcardPanel extends JPanel {
         this.setCanvasImage(kanji.imageURL);
     }
 
-    public void revealInfo() {
+    private void revealInfo() {
         this.kanjiLabel.setText(LabelBuilder.buildLabelHTML(this.kanji));
+    }
+
+    private void openStrokeOrderWindow() {
+        KanjiStrokesWindow window = new KanjiStrokesWindow(this.kanji.strokeURLs);
+        window.setVisible(true);
     }
 
 

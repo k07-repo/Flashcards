@@ -4,8 +4,8 @@ import k07.flashcards.gui.RootWindow;
 
 public class Main {
     public static void main(String[] args) {
-        RootWindow window = new RootWindow();
-        window.setSize(600, 600);
-        window.setVisible(true);
+        RootWindow rootWindow = new RootWindow();
+        rootWindow.setSize(600, 600);
+        rootWindow.setVisible(true);
     }
 }

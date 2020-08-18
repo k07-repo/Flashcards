@@ -38,7 +38,6 @@ public class InternetUtils {
             String kunyomiHiragana = kunyomi.get("hiragana").toString();
 
             String imageUrl = ((LinkedTreeMap)subMap.get("video")).get("poster").toString();
-
             Object o = ((LinkedTreeMap)map.get("references")).get("grade");
             int grade;
             if(o == null) {
@@ -47,6 +46,9 @@ public class InternetUtils {
             else {
                 grade = (int)((double)((LinkedTreeMap)map.get("references")).get("grade")); //casting straight to int doesn't work
             }
+
+            Map strokes = (LinkedTreeMap)subMap.get("strokes");
+            ArrayList<String> strokeURLs = (ArrayList<String>)strokes.get("images");
 
             ArrayList<LinkedTreeMap> examples = (ArrayList<LinkedTreeMap>)map.get("examples");
             ArrayList<ExampleTuple> exampleList = new ArrayList<>();
@@ -57,7 +59,7 @@ public class InternetUtils {
                 exampleList.add(new ExampleTuple(exampleJapanese, exampleMeaning));
             }
 
-            CharacterTuple kanji = new CharacterTuple(character, meaning, onyomiRomaji, onyomiKatakana, kunyomiRomaji, kunyomiHiragana, imageUrl, exampleList, grade);
+            CharacterTuple kanji = new CharacterTuple(character, meaning, onyomiRomaji, onyomiKatakana, kunyomiRomaji, kunyomiHiragana, strokeURLs, imageUrl, exampleList, grade);
             return kanji;
         }
         catch (UnirestException e){
