@@ -16,6 +16,8 @@ public class KanjiStrokesWindow extends JFrame {
         this.setLayout(new GridLayout(1, 1));
         this.strokeURLs = strokeURLs;
         this.setupComponents();
+        this.setSize(400, 600);
+        this.setResizable(false);
     }
 
     private void setupComponents() {
@@ -27,7 +29,9 @@ public class KanjiStrokesWindow extends JFrame {
             panel.add(canvas);
         }
 
-        JScrollPane pane = new JScrollPane(panel);
+        JScrollPane pane = new JScrollPane(panel,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         this.add(pane);
     }
 }
