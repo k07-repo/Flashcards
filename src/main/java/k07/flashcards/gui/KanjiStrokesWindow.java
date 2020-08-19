@@ -16,8 +16,7 @@ public class KanjiStrokesWindow extends JFrame {
         this.setLayout(new GridLayout(1, 1));
         this.strokeURLs = strokeURLs;
         this.setupComponents();
-        this.setSize(400, 600);
-        this.setResizable(false);
+        this.setSize(600, 600);
     }
 
     private void setupComponents() {

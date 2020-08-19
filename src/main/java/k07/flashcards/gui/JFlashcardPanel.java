@@ -35,7 +35,7 @@ public class JFlashcardPanel extends JPanel {
         });
         labelPanel.add(revealButton, BorderLayout.SOUTH);
 
-        JButton strokeButton = new JButton("Stroke order");
+        JButton strokeButton = new JButton("Stroke order (WIP)");
         strokeButton.addActionListener(e -> {
             if(this.kanji == null) {
                 DialogUtils.displayErrorMessage("Look up a kanji first!");
